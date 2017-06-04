@@ -217,7 +217,7 @@ namespace VRTK
 
             RaycastHit collidedWith;
 #pragma warning disable 0618
-            bool hasRayHit = VRTK_CustomRaycast.Raycast(customRaycast, pointerRaycast, out collidedWith, layersToIgnore, calculatedLength);
+            bool hasRayHit = VRTK_CustomRaycast.Raycast(customRaycast, pointerRaycast, out collidedWith, layersToIgnore, calculatedLength, QueryTriggerInteraction.Ignore);
 #pragma warning restore 0618
 
             float contactDistance = 0f;
@@ -250,7 +250,7 @@ namespace VRTK
             RaycastHit collidedWith;
 
 #pragma warning disable 0618
-            bool downRayHit = VRTK_CustomRaycast.Raycast(customRaycast, projectedBeamDownRaycast, out collidedWith, layersToIgnore, maximumLength.y);
+            bool downRayHit = VRTK_CustomRaycast.Raycast(customRaycast, projectedBeamDownRaycast, out collidedWith, layersToIgnore, maximumLength.y, QueryTriggerInteraction.Ignore);
 #pragma warning restore 0618
 
             if (!downRayHit || (destinationHit.collider && destinationHit.collider != collidedWith.collider))
@@ -302,7 +302,7 @@ namespace VRTK
                     RaycastHit checkCollisionHit;
 
 #pragma warning disable 0618
-                    if (VRTK_CustomRaycast.Raycast(customRaycast, checkCollisionRay, out checkCollisionHit, layersToIgnore, nextPointDistance))
+                    if (VRTK_CustomRaycast.Raycast(customRaycast, checkCollisionRay, out checkCollisionHit, layersToIgnore, nextPointDistance, QueryTriggerInteraction.Ignore))
 #pragma warning restore 0618
                     {
                         Vector3 collisionPoint = checkCollisionRay.GetPoint(checkCollisionHit.distance);
@@ -310,7 +310,7 @@ namespace VRTK
                         RaycastHit downwardCheckHit;
 
 #pragma warning disable 0618
-                        if (VRTK_CustomRaycast.Raycast(customRaycast, downwardCheckRay, out downwardCheckHit, layersToIgnore, float.PositiveInfinity))
+                        if (VRTK_CustomRaycast.Raycast(customRaycast, downwardCheckRay, out downwardCheckHit, layersToIgnore, float.PositiveInfinity, QueryTriggerInteraction.Ignore))
 #pragma warning restore 0618
                         {
                             destinationHit = downwardCheckHit;

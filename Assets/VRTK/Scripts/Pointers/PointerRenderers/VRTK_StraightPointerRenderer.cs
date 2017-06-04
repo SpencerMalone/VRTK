@@ -189,7 +189,7 @@ namespace VRTK
             Ray pointerRaycast = new Ray(origin.position, origin.forward);
             RaycastHit pointerCollidedWith;
 #pragma warning disable 0618
-            bool rayHit = VRTK_CustomRaycast.Raycast(customRaycast, pointerRaycast, out pointerCollidedWith, layersToIgnore, maximumLength);
+            bool rayHit = VRTK_CustomRaycast.Raycast(customRaycast, pointerRaycast, out pointerCollidedWith, layersToIgnore, maximumLength, QueryTriggerInteraction.Ignore);
 #pragma warning restore 0618
 
             CheckRayMiss(rayHit, pointerCollidedWith);
